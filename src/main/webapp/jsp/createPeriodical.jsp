@@ -6,7 +6,6 @@
 <head>
 <meta charset="ISO-8859-1">
 <title>Periodicals</title>
-<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
 <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
 </head>
 <body>
@@ -18,7 +17,7 @@
 			<h3 class="w3-bar-item">Menu</h3>
 			<a href="/home" class="w3-bar-item w3-button">Home</a> <a
 				href="/create-periodical" class="w3-bar-item w3-button">Create
-				periodical</a> <a href="#" class="w3-bar-item w3-button">Bucket</a>
+				periodical</a> <a href="/buckets" class="w3-bar-item w3-button">Bucket</a>
 		</div>
 
 
@@ -39,23 +38,26 @@
 					</h2>
 				</c:if>
 
-
-
-
-				<form:form method="POST" action="${contextPath}/addPeriodical" modelAttribute="periodical">
+				<form:form method="POST" action="${contextPath}/addPeriodical"
+					enctype="multipart/form-data">
 					<table>
 						<tr>
-							<td><form:label path="name">Name</form:label></td>
-							<td><form:input path="name" /></td>
+							<td>Name</td>
+							<td><input type="text" name="name" /></td>
 						</tr>
 						<tr>
-							<td><form:label path="description">Description</form:label></td>
-							<td><form:input path="description" /></td>
+							<td>Description</td>
+							<td><input type="text" name="description" /></td>
 						</tr>
 						<tr>
-							<td><form:label path="price">Price</form:label></td>
-							<td><form:input path="price" /></td>
+							<td>Price</td>
+							<td><input type="number" name="price" /></td>
 						</tr>
+						<tr>
+							<td>Select an image to upload</td>
+							<td><input type="file" name="image" /></td>
+						</tr>
+
 						<tr>
 							<td><input type="submit" value="Submit" /></td>
 						</tr>
