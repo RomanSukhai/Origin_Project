@@ -1,14 +1,12 @@
 package ua.lviv.lgs.controller;
 
-import java.security.Principal;
-import java.util.Date;
+import java.sql.Date;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.RequestBody;
+
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -44,7 +42,7 @@ public class BucketController {
 
 		Bucket bucket = new Bucket();
 		bucket.setPeriodical(periodical);
-		bucket.setPurchaseDate(new Date());
+		bucket.setPurchaseDate(new Date(0));
 
 		Authentication auth = SecurityContextHolder.getContext().getAuthentication();
 		String userEmail = auth.getName();
@@ -57,7 +55,7 @@ public class BucketController {
 
 	@RequestMapping(value = "/bucket", method = RequestMethod.GET)
 	public ModelAndView delete(@RequestParam String id) {
-		bucketService.delete(new Bucket(Integer.parseInt(id.replaceAll("\\s",""))));
+		bucketService.delete(new Bucket(Integer.parseInt(id.replaceAll("\\s", ""))));
 		return getBucketItems();
 	}
 
